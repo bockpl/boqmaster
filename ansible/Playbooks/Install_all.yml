@@ -1,0 +1,2 @@
+---
+- import_playbook: install_dep_SOGE_qmaster.yml

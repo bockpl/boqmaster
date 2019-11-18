@@ -1,0 +1,12 @@
+---
+- name: "Instlacja wymagan systemu kolejkowego SGE qmaster"
+  hosts: "{{ var_host | default('blueocean') }}"
+  tasks:
+    - name: "Kasowanie konfiguracji modulu SOGE exec" 
+      file:
+        path: /etc/monit.d/sge_exec.conf
+        state: absent
+    - name: "Kasowanie skryptu startowego sge_execd"
+      file:
+        path: /etc/init.d/sgeexecd.blueocean-v15
+        state: absent 
