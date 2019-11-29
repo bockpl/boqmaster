@@ -12,6 +12,9 @@ RUN yum -y install yum-plugin-remove-with-leaves && \
 
 # SGE
 ADD soge/sgemaster.blueocean-v15 /etc/init.d/
+
 ADD monit/* /etc/monit.d/
+
+ENV JUPYTERHUB_WORKDIR=/var/run/jupyterhub
 
 CMD ["/bin/bash","-c","/start.sh"]
