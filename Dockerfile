@@ -1,4 +1,4 @@
-FROM bockpl/bocompute:bocompute
+FROM bockpl/bocompute:develop
 #FROM lokalnerepo
 
 # Dodanie i uruchomienie scenariuszy ansible, tymczasowo tylko na czas budowy
