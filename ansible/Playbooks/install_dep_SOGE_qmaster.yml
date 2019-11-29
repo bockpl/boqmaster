@@ -10,3 +10,68 @@
       file:
         path: /etc/init.d/sgeexecd.blueocean-v15
         state: absent 
+    - name: "Instalacja zaleznosci dla pakiety gridengine 8.1.7"
+      yum:
+        name: 
+          - bash
+          - binutils
+          - compat-db47
+          - gawk
+          - glibc
+          - hwloc-libs
+          - jemalloc 
+          - libgcc
+          - man-db
+          - ncurses
+          - ncurses-libs
+          - net-tools
+          - openssl-libs
+          - pam
+          - perl
+          - perl-Env
+          - perl-Exporter
+          - shadow-utils
+          - tcl
+          - tcsh
+        state: present
+        update_cache: yes
+    - name: "Instalacja zaleznosci dla pakiety gridengine qmaster 8.1.7"
+      yum:
+        name: 
+          - bash
+          - glibc
+          - jemalloc
+          - libdb4-utils
+          - libgcc
+          - openssl-libs
+          - perl
+          - perl-Env
+          - perl-Getopt-Long
+          - perl-XML-Simple
+          - procps-ng
+        state: present
+        update_cache: yes
+    - name: "Instalacja zaleznosci dla pakiety gridengine qmon 8.1.7"
+      yum:
+        name: 
+          - glibc
+          - jemalloc
+          - libICE
+          - libSM
+          - libX11
+          - libXext
+          - libXt
+          - libgcc
+          - motif
+          - openssl-libs
+          - xorg-x11-fonts-ISO8859-1-100dpi
+          - xorg-x11-fonts-ISO8859-1-75dpi
+        state: present
+        update_cache: yes
+    - name: "DO POPRAWY - Obejscie, tworzenie linku /opt/sge do /usr/local/sge"
+      file:
+        src: /opt/sge
+        dest: /usr/local/sge
+        state: link
+        force: yes
+
