@@ -12,6 +12,6 @@ RUN yum -y install yum-plugin-remove-with-leaves && \
 
 # SGE
 ADD soge/sgemaster.blueocean-v15 /etc/init.d/
-ADD monit/sge_qmaster.conf /etc/monit.d/
+ADD monit/* /etc/monit.d/
 
 CMD ["/bin/bash","-c","/start.sh"]
