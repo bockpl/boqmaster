@@ -26,5 +26,6 @@ ADD monit/* /etc/monit.d/
 
 # Katalog w ktorymm jest uruchomiony jupyterhub, tam skladowane beda logi
 ENV JUPYTERHUB_WORKDIR=/var/run/jupyterhub
+ENV JUPYTERHUB_CONFIGDIR=/opt/software/Blueocean/Configs/jupyterhub
 
 CMD ["/bin/bash","-c","/start.sh"]
