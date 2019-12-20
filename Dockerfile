@@ -1,7 +1,7 @@
 FROM bockpl/bocompute:develop
 #FROM lokalnerepo
 
-EXPOSE 6445/tcp 8000/tcp 8081/tcp
+EXPOSE 6444/tcp 8000/tcp
 
 RUN \
 # Tymczasowa instalacja git-a i ansible w celu uruchomienia playbook-ow
