@@ -1,10 +1,13 @@
 #!/bin/bash
-PATH=/opt/python/python3.6.7/bin:$PATH
-LD_LIBRARY_PATH="/opt/python/python3.6.7/lib"
-export PATH LD_LIBRARY_PATH
+module load conda
+
+source /opt/miniconda3/etc/profile.d/conda.sh
+conda activate jupyter
+
 mkdir -p $JUPYTERHUB_WORKDIR
 cd $JUPYTERHUB_WORKDIR
 JUPYTHER_OPT=""
+DEBUG=y
 if ! [[ -z "$DEBUG" ]]; then
   JUPYTHER_OPT="$JUPYTHER_OPT --debug"
 fi
