@@ -31,4 +31,5 @@ ADD monit/* /etc/monit.d/
 ENV JUPYTERHUB_WORKDIR=/var/run/jupyterhub
 ENV JUPYTERHUB_CONFIGDIR=/opt/software/Blueocean/Configs/jupyterhub
 
-CMD ["/bin/bash","-c","/start.sh"]
+# Dziedziczone z obrazu macierzystego
+#CMD ["/bin/bash","-c","/usr/local/bin/start.sh"]
