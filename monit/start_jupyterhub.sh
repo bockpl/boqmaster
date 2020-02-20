@@ -7,7 +7,6 @@ conda activate jupyter
 mkdir -p $JUPYTERHUB_WORKDIR
 cd $JUPYTERHUB_WORKDIR
 JUPYTHER_OPT=""
-DEBUG=y
 if ! [[ -z "$DEBUG" ]]; then
   JUPYTHER_OPT="$JUPYTHER_OPT --debug"
 fi
