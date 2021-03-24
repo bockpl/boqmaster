@@ -1,4 +1,4 @@
-FROM bockpl/bocompute:v1.9.5
+FROM bockpl/bocompute:v1.9.7
 #FROM lokalnerepo
 
 EXPOSE 6444/tcp 8000/tcp
