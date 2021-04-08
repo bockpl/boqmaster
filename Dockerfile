@@ -11,7 +11,7 @@ yum -y install git && \
 # Pobranie repozytorium z playbook-ami
 cd /; git clone https://github.com/bockpl/boplaybooks.git; cd boplaybooks && \
 # Skasowanie tymczasowego srodowiska git, UWAGA: Brak tego wpisu w tej kolejnosci pozbawi srodowiska oprogramowania narzedziowego less, man itp.:
-yum -y remove git --remove-leaves && \
+#yum -y remove git --remove-leaves && \
 # Instalacja wymagan dla qmastera SOGE
 ansible-playbook Playbooks/install_dep_SOGE_qmaster.yml --connection=local --extra-vars "var_host=127.0.0.1" && \
 # Instalacja wymagan dla jupyterhub-a
