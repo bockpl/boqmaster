@@ -16,6 +16,8 @@ cd /; git clone https://github.com/bockpl/boplaybooks.git; cd boplaybooks && \
 ansible-playbook Playbooks/install_dep_SOGE_qmaster.yml --connection=local --extra-vars "var_host=127.0.0.1" && \
 # Instalacja wymagan dla jupyterhub-a
 ansible-playbook Playbooks/install_dep_jupyterhub.yml --connection=local --extra-vars "var_host=127.0.0.1" && \
+# Instalacja filebead dla kibany
+ansible-playbook Playbooks/install_filebead.yml --connection=local --extra-vars "var_host=127.0.0.1" && \
 # Skasowanie repozyturium playbookow
 rm -rf /boplaybooks && \
 # Skasowanie tymczasowego srodowiska git i ansible
@@ -26,6 +28,8 @@ rm -rf /ansible
 ADD soge/sgemaster.blueocean-v15 /etc/init.d/
 
 ADD monit/* /etc/monit.d/
+
+ADD filebeat/* /etc/filebeat/
 
 # Katalog w ktorymm jest uruchomiony jupyterhub, tam skladowane beda logi
 ENV JUPYTERHUB_WORKDIR=/var/run/jupyterhub
