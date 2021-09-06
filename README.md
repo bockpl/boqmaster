@@ -1,12 +1,7 @@
-# boqmaster
-Nadzorca systemu kolejkowego klastra BlueOcean
+# BoCompute
+
+Podstawowy kontener obliczeniowy (wykonawczy) klastra BlueOcean.
 
 Zmienna srodowiskowa DEBUG=true wlacza opcje debuggowania w niektorych uruchamianych procesach min w monit.
 
-Założenie: Przed uruchamianiem kontenera są już zamontowane prawidłowe katalogi /home i /opt na systemie bazowym.
-
-JUPYTERHUB_EXT_PORT=8000
-JUPYTERHUB_INT_PORT=8081
-
-docker run -dt --rm --name boqmaster -h $(hostname -f) -v /opt:/opt -v /home:/home -v /etc/aliases:/etc/aliases -v /etc/msmtprc:/etc/msmtprc -p 6444:6444 -p ${JUPYTERHUB_EXT_PORT}:${JUPYTERHUB_EXT_PORT} -p ${JUPYTERHUB_INT_PORT}:${JUPYTERHUB_INT_PORT}  --net cluster_network --ip $(echo 10.0.0.$(hostname -i | cut -d "." -f4)) -e DEBUG=true boqmaster
-
+docker run -dt --rm --name bocompute -h ${HOSTNAME} --cpus ${CPUS} --memory ${MEMORY} --memory-swap ${MEMORY-SWAP} --shm-size=${SHM-SIZE} -v /etc/aliases:/etc/aliases -v /etc/msmtprc:/etc/msmtprc -p 6445:6445 --net cluster_network --ip $(echo 10.0.0.$(hostname -i | cut -d "." -f4)) -e DEBUG=true bockpl/bocompute:bocompute
