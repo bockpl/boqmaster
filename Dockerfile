@@ -193,7 +193,7 @@ ansible-playbook Playbooks/install_glibc-dev.yml --connection=local --extra-vars
 # Instalacja wymagan dla jupyterhub-a
 ansible-playbook Playbooks/install_dep_jupyterhub.yml --connection=local --extra-vars "var_host=127.0.0.1" && \
 # Instalacja filebead dla kibany
-ansible-playbook Playbooks/install_filebead.yml --connection=local --extra-vars "var_host=127.0.0.1" && \
+#ansible-playbook Playbooks/install_filebead.yml --connection=local --extra-vars "var_host=127.0.0.1" && \
 # Skasowanie katalogu z playbookami
 rm -rf /boplaybooks && \
 # Skasowanie tymczasowego srodowiska git i ansible
@@ -253,11 +253,11 @@ ADD monit/stop_slurmctld.sh /etc/monit.d/
 ADD monit/start_jupyterhub.sh /etc/monit.d/
 #ADD monit/*.sh /etc/monit.d/
 #RUN mkdir /var/run/nslcd
-ADD monit/start_filebeat.sh /etc/monit.d/
-ADD monit/stop_filebeat.sh /etc/monit.d/
-ADD monit/filebeat.conf /etc/monit.d/
-
-ADD filebeat/* /etc/filebeat/
+#ADD monit/start_filebeat.sh /etc/monit.d/
+#ADD monit/stop_filebeat.sh /etc/monit.d/
+#ADD monit/filebeat.conf /etc/monit.d/
+#
+#ADD filebeat/* /etc/filebeat/
 
 RUN chown nslcd -fR /var/run/nslcd
 RUN mkdir /var/run/slurm
