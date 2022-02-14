@@ -37,6 +37,8 @@ RUN set -ex \
        git \
        gnupg \
        make \
+       mesa-libGL  \ 
+       mesa-libGL-devel \ 
        munge \
        munge-libs \
        munge-devel \
