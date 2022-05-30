@@ -1,14 +1,8 @@
 FROM centos:7
 LABEL maintainer="pawel.adamczyk.1@p.lodz.pl" 
-#"seweryn.sitarski@p.lodz.pl"
 
-# SGE
-#ADD soge/sgeexecd.blueocean-v15 /etc/init.d/
-#ADD soge/sge.sh /etc/profile.d/
+# Module
 ADD soge/module.sh /etc/profile.d/
-#
-#ADD soge/jemalloc-3.6.0-1.el7.x86_64.rpm /tmp/jemalloc-3.6.0-1.el7.x86_64.rpm
-#
 ADD repos/ghetto.repo /etc/yum.repos.d/
 
 # SLURM
@@ -154,16 +148,10 @@ RUN yum -y install ansible
 #&& 
 RUN yum -y install git 
 #&& \
-# Pobranie repozytorium z playbook-ami
-RUN cd /; git clone https://github.com/bockpl/boplaybooks.git
-#; cd /boplaybooks 
-#&& \
-# Skasowanie tymczasowego srodowiska git, UWAGA: Brak tego wpisu w tej kolejnosci pozbawi srodowiska oprogramowania narzedziowego less, man itp.:
-RUN yum -y remove git epel-release --remove-leaves 
 
-#&& \
-# Instalacja systemu autoryzacji AD PBIS
+# Pobranie repo z playbookami, Instalacja systemu autoryzacji LDAP
 RUN \
+cd /; git clone https://github.com/bockpl/boplaybooks.git && \
 cd boplaybooks ; echo ; pwd ; echo && \
 #ansible-playbook Playbooks/install_PBIS.yml --connection=local --extra-vars "var_host=127.0.0.1" && \
 # Instalacja wymagan dla systemu kolejkowego SOGE    
@@ -196,10 +184,12 @@ ansible-playbook Playbooks/install_glibc-dev.yml --connection=local --extra-vars
 ansible-playbook Playbooks/install_dep_jupyterhub.yml --connection=local --extra-vars "var_host=127.0.0.1" && \
 # Instalacja filebead dla kibany
 #ansible-playbook Playbooks/install_filebead.yml --connection=local --extra-vars "var_host=127.0.0.1" && \
+# Instalacja wymagan dla R
+ansible-playbook Playbooks/install_dep_R.yml --connection=local --extra-vars "var_host=127.0.0.1" && \
 # Skasowanie katalogu z playbookami
 rm -rf /boplaybooks && \
 # Skasowanie tymczasowego srodowiska git i ansible
-yum -y remove ansible --remove-leaves && \
+yum -y remove ansible git epel-release --remove-leaves && \
 cd /; rm -rf /boplaybooks ; 
 
 # Dodanie autoryzacji  LDAP
