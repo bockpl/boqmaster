@@ -186,6 +186,8 @@ ansible-playbook Playbooks/install_dep_jupyterhub.yml --connection=local --extra
 #ansible-playbook Playbooks/install_filebead.yml --connection=local --extra-vars "var_host=127.0.0.1" && \
 # Instalacja wymagan dla R
 ansible-playbook Playbooks/install_dep_R.yml --connection=local --extra-vars "var_host=127.0.0.1" && \
+# Instalacja ssh
+ansible-playbook Playbooks/install_ssh.yml --connection=local --extra-vars "var_host=127.0.0.1" && \
 # Skasowanie katalogu z playbookami
 rm -rf /boplaybooks && \
 # Skasowanie tymczasowego srodowiska git i ansible
