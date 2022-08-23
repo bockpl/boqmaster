@@ -194,15 +194,29 @@ rm -rf /boplaybooks && \
 yum -y remove ansible git epel-release --remove-leaves && \
 cd /; rm -rf /boplaybooks ; 
 
+# Korekta SSH
+RUN  	yum install -y \
+	openssh \
+        openssh-server \
+        openssh-clients \
+        openssh-askpass && \
+     	yum clean all && \
+     	rm -rf /var/cache/yum
+
+COPY bin/ldappassupdate /usr/local/bin/
+COPY bin/ldappassupdatecleaning /usr/local/bin/
+RUN	chmod 755 /usr/local/bin/ldappassupdate && \
+	chmod 755 /usr/local/bin/ldappassupdatecleaning
+
 # Dodanie autoryzacji  LDAP
-RUN  yum install -y \
+RUN  	yum install -y \
         nss-pam-ldapd \
         openssl \
         nscd \
         openldap-clients \
         authconfig && \
-     yum clean all && \
-     rm -rf /var/cache/yum
+     	yum clean all && \
+     	rm -rf /var/cache/yum
 
 RUN  authconfig --update --enableldap --enableldapauth
 RUN  authconfig --updateall --enableldap --enableldapauth

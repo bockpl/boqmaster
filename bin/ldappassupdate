@@ -1,0 +1,6 @@
+#!/bin/bash
+#
+# Autor: Pawel Adamczyk
+#
+cd /opt/software/ldap/passupdate
+./users_pass_update_a
