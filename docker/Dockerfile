@@ -126,6 +126,8 @@ RUN yum -y install ansible
 RUN yum -y install git 
 #&& \
 
+RUN echo "reinstalacja poprawionych ansibli"
+
 # Pobranie repo z playbookami, Instalacja systemu autoryzacji LDAP
 RUN \
 cd /; git clone https://github.com/bockpl/boplaybooks.git && \
